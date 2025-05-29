@@ -2,7 +2,6 @@ import unittest
 from unittest.mock import patch, Mock
 from eia_collector import EIADataCollector  # adjust import if needed
 import pandas as pd
-from datetime import datetime
 
 class TestEIADataCollector(unittest.TestCase):
 
