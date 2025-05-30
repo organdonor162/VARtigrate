@@ -21,3 +21,21 @@ The application will take either real or synthetic energy usage data, coupled wi
 | `test_get_electric_hourly_demand_subregion` | `get_electric_hourly_demand_subregion()` | Normal usage     | Parses subregion demand correctly                  |
 | `test_make_request_error_handling`          | `_make_request()`                        | API error occurs | Raises and logs exceptions correctly               |
 
+
+## Plan:
+
+1. **Data Collection**: 
+   - Collect historical weather data and energy usage data.
+   - Use APIs to gather real-time weather and energy data.
+2. **Data Processing**:
+   - Clean and preprocess the data for analysis.
+   - Create features that represent weather conditions, energy usage patterns, and other relevant factors.
+3. **Model Development**:
+    - Develop machine learning models to predict energy production based on weather data
+    - Develop models to estimate grid energy needs based on historical usage and weather data 
+4. **Integration Strategy**:
+   - Create an optimization algorithm to distribute renewable energy based on predictions.
+   - Implement a feedback loop to adjust strategies based on real-time data.
+5. **User Interface**:
+   - Develop a user interface to visualize current grid conditions and future forecasts.
+   - Provide insights and recommendations for energy distribution according to the model predictions
