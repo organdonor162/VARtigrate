@@ -33,9 +33,26 @@ The application will take either real or synthetic energy usage data, coupled wi
 3. **Model Development**:
     - Develop machine learning models to predict energy production based on weather data
     - Develop models to estimate grid energy needs based on historical usage and weather data 
+
+    **Models for Grid Needs Estimation**:
+    - Linear Regression: For basic relationships between weather and energy usage.
+    - XGBoost: For capturing non-linear relationships and interactions.
+    - Polynomial Regression: For modeling complex relationships - limit to a degree of 2.
+
+    **To model renewable energy production**:
+    **Features**:
+   - Temperature, humidity, wind speed, solar radiation, and other relevant weather parameters.
+    - Historical energy production data from renewable sources.
+    - Time of day, day of the week, and seasonal patterns.
+
+
+    
 4. **Integration Strategy**:
    - Create an optimization algorithm to distribute renewable energy based on predictions.
    - Implement a feedback loop to adjust strategies based on real-time data.
 5. **User Interface**:
    - Develop a user interface to visualize current grid conditions and future forecasts.
    - Provide insights and recommendations for energy distribution according to the model predictions
+
+
+
