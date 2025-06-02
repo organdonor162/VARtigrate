@@ -38,20 +38,24 @@ class GridStatusExtractor:
         historical_hourly_load = historical_load.set_index("Time").resample("h").mean(numeric_only=True)
         return historical_hourly_load
     
-    def current_load(self, prev_hours: int = 0):
+    def current_load(self, prev_hours: int = 1):
         """
         Get current load data from the gridstatus API.
         
         :param prev_hours: Number of previous hours to include in the data.
         :return: DataFrame containing current load data.
         """
-        current_load = self.caiso.get_load()
+        #get previous 24 hours of data:
+        start = pd.Timestamp.now() - pd.Timedelta(hours=prev_hours)
+        end = pd.Timestamp.now()
+        current_load = self.caiso.get_load(start, end=end)
         # Convert 'Time' to datetime (removes timezone if present)
         current_load['Time'] = pd.to_datetime(current_load['Time'], utc=True)
         # Set index and resample (aggregate only numeric columns)
         current_load = current_load.set_index("Time").resample("h").mean(numeric_only=True)
         # If prev_hours is specified, filter the DataFrame to include only the last 'prev_hours' hours
-        if prev_hours > 0:
-            current_load = current_load.last(f"{prev_hours}H")
+        if len(current_load) >= prev_hours:
+            current_load = current_load.tail(prev_hours)
+        
 
         return current_load
